@@ -40,7 +40,7 @@ export default UpdatePost = ({ ...props }) => {
   });
 
   const [updatePost, { loading, error }] = useMutation(newPostQuery, {
-    refetchQueries: ['postQuery'],
+    refetchQueries: ['Post'],
   });
 
   if (error) return null;
@@ -64,7 +64,6 @@ export default UpdatePost = ({ ...props }) => {
       });
   };
 
-  console.log('data===', data);
   return (
     <View>
       {loading ? (

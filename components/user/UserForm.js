@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, View } from 'react-native';
 import { Form, Item, Input, Label } from 'native-base';
 
 export default UserForm = ({ ...props }) => {

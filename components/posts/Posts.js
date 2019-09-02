@@ -37,6 +37,7 @@ export default ({ ...props }) => {
           data={screenProps.user.posts}
           renderItem={({ item }) => (
             <ListItem
+              button={true}
               onPress={() => {
                 navigation.navigate('Post', {
                   id: item.id,

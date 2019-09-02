@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
@@ -15,7 +15,7 @@ export default LoginUser = ({ ...props }) => {
     }
   `;
 
-  const [signinUser] = useMutation(signinUserQuery);
+  const [signinUser, { loading }] = useMutation(signinUserQuery);
 
   loginUser = async ({ email, password }) => {
     try {
@@ -32,6 +32,7 @@ export default LoginUser = ({ ...props }) => {
 
   return (
     <View>
+      <ActivityIndicator size="large" animating={loading} />
       <Text>Login</Text>
       <UserForm type="Login" onSubmit={loginUser} />
     </View>

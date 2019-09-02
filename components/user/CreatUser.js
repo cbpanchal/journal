@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 import UserForm from './UserForm';
+import { signIn } from '../../loginUtils';
 
 export default CreateUser = ({ ...props }) => {
   const createUserQuery = gql`
@@ -24,7 +25,7 @@ export default CreateUser = ({ ...props }) => {
     }
   `;
 
-  const [createUser] = useMutation(createUserQuery);
+  const [createUser, { loading }] = useMutation(createUserQuery);
 
   const [signinUser] = useMutation(signinUserQuery);
 
@@ -46,6 +47,7 @@ export default CreateUser = ({ ...props }) => {
 
   return (
     <View>
+      <ActivityIndicator size="large" animating={loading} />
       <Text>Register</Text>
       <UserForm type="Register" onSubmit={signupUser} />
     </View>
